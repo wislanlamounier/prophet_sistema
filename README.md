@@ -3,7 +3,13 @@ Sistema de gestão odontológica
 
 # Informações
 Para o funcionamento do software, é necessário ao menos 2 bancos de dados: o principal (prophet_main) e outro pertencente à
-clínica contratante (prophet_uniqid()). Usuário: rafael@bentonet.com.br. Senha: 123.
+clínica contratante (prophet_uniqid()). 
+
+Usuário: rafael@bentonet.com.br. Senha: 123. 
+
+O diagrama ER encontra-se aqui: http://imgur.com/a/xVLDn
+
+Tu vai encontrar tabelas nestes bancos que não estão presentes no diagrama ER. Ignora, são tabelas de sistemas que funcionam paralelo ao principal, ou então de funcionalidades que ainda não foram implementadas.
 
 # Instalação
 **Banco de dados:**
