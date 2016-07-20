@@ -1,0 +1,40 @@
+RewriteEngine On
+
+#Rewriting URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .(/)?$ index.php
+
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC]
+RewriteRule \.(gif|jpg|sql|png|pdf|txt)$ - [F]
+
+#Preventing users from listing directories
+Options -Indexes
+
+#Setting up error pages
+ErrorDocument 400 /include/error.php?l=400
+ErrorDocument 401 /include/error.php?l=401
+ErrorDocument 403 /include/error.php?l=403
+ErrorDocument 404 /include/error.php?l=404
+ErrorDocument 500 /include/error.php?l=500
+
+#Forcing UTF-8 as default charset
+<FilesMatch ".(htm|html|css|js)$">
+AddDefaultCharset UTF-8
+</FilesMatch>
+
+#Enabling cache
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 minute"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 5 days"
+</IfModule>

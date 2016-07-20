@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Prophet" showNewOnTargetInSync="false" showExcludedInSync="true">
+    <serverData>
+      <paths name="BN Cloud">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Financeiro Serra">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Prophet">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/arquivos_clinicas/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/arquivos_impressao/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/tema/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/plugins/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/prontuarios/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/registro/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/backups/" />
+            <excludedPath path="/backups" />
+            <excludedPath path="/plugins" />
+            <excludedPath path="/tema" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/prontuarios" />
+            <excludedPath path="/arquivos_impressao" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="Prophet - Admin">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Prophet - Registro">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Prophet - old">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/arquivos_clinicas/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/arquivos_impressao/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/tema/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/plugins/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/prontuarios/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/registro/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/backups/" />
+            <excludedPath path="/backups" />
+            <excludedPath path="/plugins" />
+            <excludedPath path="/tema" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/prontuarios" />
+            <excludedPath path="/arquivos_impressao" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="Prophet Admin">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

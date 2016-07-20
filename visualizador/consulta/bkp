@@ -1,0 +1,11 @@
+                                            <select name="cdnPaciente" class="iptCdnPaciente select2 form-control" id="iptCdnPaciente"/>
+                                                <option selected ></option>
+                                                <?php
+                                                    foreach($arrPacientes as $arrPaciente){
+                                                        $arrPaciente['nomPaciente'] .= isset($arrPaciente['nomSobrenome']) ? ' '.$arrPaciente['nomSobrenome'] : '';
+                                                ?>
+                                                <option value="<?php echo $arrPaciente['cdnPaciente']; ?>"><?php echo $arrPaciente['nomPaciente']; ?></option>
+                                                <?php
+                                                    }
+                                                ?>
+                                            </select>
