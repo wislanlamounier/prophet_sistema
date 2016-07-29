@@ -637,6 +637,20 @@
                 ORDER BY c.datConsulta';
             $faltas = $modelo->query($sql);
             
+            for($i = 1; $i <= date("t"); $i++){
+                if($i <= 9){
+                    $dt = date("Y-m-0") . $i;
+                } else{
+                    $dt = date("Y-m-") . $i;
+                }
+                
+                $labels[] = $dt;
+                $data[$dt]['consultas'] = 0;
+                $data[$dt]['desmarques'] = 0;
+                $data[$dt]['faltas'] = 0;
+                $data[$dt]['remarques'] = 0;
+            }
+            
             foreach ($consultas as $consulta) {
                 if (!in_array($consulta['data'], $labels))
                     $labels[] = $consulta['data'];
@@ -705,7 +719,7 @@
             }
 
             $finalData['labels'] = $labels;
-
+            
             echo json_encode($finalData);
         }
 
