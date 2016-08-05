@@ -92,6 +92,8 @@
             if ($this->tipo == 'orcamento') {
                 $this->SetY(-20);
                 $this->Cell(0, 10, 'Assinatura do titular', 'T', 0, 'C');
+                $this->SetY(-50);
+                $this->Cell(0, 10, 'Assinatura do Dentista', 'T', 0, 'C');
             }
             if($this->tipo == 'aprovados'){
                 $this->SetFont('Arial', '', 8);
