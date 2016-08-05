@@ -269,7 +269,6 @@
 
             $fins = $_POST['fins'];
             $rg = $_POST['rg'];
-            $endereco = $_POST['endereco'];
             $horario = $_POST['horario'];
             $horario = str_replace('-', 'às', $horario);
             $data = $_POST['data'];
@@ -332,7 +331,7 @@
                 else
                     $inicio = 'Comunico';
 
-                $pdfAtestado->PutRow(array($inicio.' para fins de '.$fins.' a pedido, que '.$nomPaciente.' R.G nº '.$rg.' residente e domiciliado(a) à '.$endereco.' esteve sob tratamento odontológico neste consultório, no período das '.$horario.' horas do dia '.$data.', necessitando o(a) mesmo(a) de '.$repouso.' ('.$extenso.') dias de repouso.'), true);
+                $pdfAtestado->PutRow(array($inicio.' para fins de '.$fins.' a pedido, que '.$nomPaciente.' R.G nº '.$rg.' esteve sob tratamento odontológico neste consultório, no período das '.$horario.' horas do dia '.$data.', necessitando o(a) mesmo(a) de '.$repouso.' ('.$extenso.') dias de repouso.'), true);
                 $pdfAtestado->Ln(3);
                 $pdfAtestado->PutRow(array('Obs: '.$observacoes), true);
                 $pdfAtestado->PutRow(array('CID - '.$cid), true);
