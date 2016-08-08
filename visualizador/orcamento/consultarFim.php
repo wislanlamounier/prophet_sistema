@@ -1,6 +1,9 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <?php require('visualizador/orcamento/modalJustificativa.php'); ?>
+                                </div>
                                 <a class="pull-right" href="<?php echo BASE_URL; ?>/orcamento/cadastrar">
                                     <button class="btn btn-success">
                                         Cadastrar novo orçamento
@@ -53,7 +56,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="cdnOrcamento" class="control-label">Número do orçamento</label>
-                                <input disabled class="form-control" type="text" name="cdnOrcamento" value="<?php echo $dtoOrcamento->getCdnOrcamento(); ?>">
+                                <input disabled class="form-control" type="text" name="cdnOrcamento" id="cdnOrcamento" value="<?php echo $dtoOrcamento->getCdnOrcamento(); ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -98,6 +101,10 @@
                         </div>
 
                         <!-- Pagamento !-->
+                        
+                        <?php
+                            if(!(is_null($dtoOrcamento->getIndDesativado()))){
+                        ?>
                         <div class="row">
                             <div class="col-md-12">
                                 <h3 class="page-header text-center">Forma de pagamento</h3>
@@ -107,6 +114,27 @@
                         <!-- Geração de impressos e escolha de pagamento !-->
                         <?php
                             include('incImpressos.inc.php');
+                        ?>
+                        <?php
+                            } else {
+                        ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="page-header text-center">Orçamento Desativado</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="datOrcamento" class="control-label">Data</label>
+                                <input disabled type="date" name="datDesativado" class="form-control" value="<?php echo $dtoOrcamento->getDatDesativado(); ?>">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label for="datValidade" class="control-label">Justificativa</label>
+                                <textarea disabled name="strJustificativa" class="form-control"><?php echo $dtoOrcamento->getStrJustificativa(); ?></textarea>
+                            </div>
+                        </div>
+                        <?php
+                            } 
                         ?>
 
 
@@ -153,9 +181,17 @@
                         </div>
                     </div>
 
-                    <?php if(is_null($dtoOrcamento->getIndAprovado())){ ?>
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <hr />
+                            <a>
+                                <button type="button" class="btn btn-block btn-lg btn-warning" onclick="openModalJustificativa();">
+                                    Desativar Orçamento
+                                </button>
+                            </a>
+                        </div>
+                    <?php if(is_null($dtoOrcamento->getIndAprovado())){ ?>
+                        <div class="col-sm-4">
                             <hr>
                             <a href="<?php echo BASE_URL; ?>/orcamento/reprovar/<?php echo $dtoOrcamento->getCdnOrcamento(); ?>">
                                 <button type="button" class="btn btn-block btn-lg btn-danger">
@@ -163,5 +199,5 @@
                                 </button>
                             </a>
                         </div>
-                    </div>
                     <?php } ?>
+                    </div>

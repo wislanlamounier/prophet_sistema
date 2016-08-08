@@ -1,7 +1,7 @@
                     <div class="col-md-12">
                             <form target="_blank" action="<?php echo BASE_URL; ?>/consulta/atestadoFim" method="post">
                                 <div class="row">
-                                    <div class="col-md-3 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label for="fins" class="control-label">Atesto para fins de</label>
                                         <input type="text" class="form-control" name="fins">
                                     </div>
@@ -11,10 +11,6 @@
                                     <div class="col-md-3 form-group">
                                         <label for="rg" class="control-label">RG</label>
                                         <input id="iptRg" type="text" class="form-control" name="rg" value="<?php echo $rg; ?>">
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label for="endereco" class="control-label">Endereço</label>
-                                        <input id="iptEndereco" type="text" class="form-control" name="endereco" value="<?php echo $endereco; ?>">
                                     </div>
                                 </div>
                                 <div class="row">

@@ -20,6 +20,7 @@
         private $valOrcamento;
         private $indAprovado = null;
         private $indFinalizado = 0;
+        private $indDesativado = 0;
         private $desOrcamento;
         private $valEntrada;
         private $indTipoDesconto;
@@ -28,6 +29,8 @@
         private $cdnUsuarioAprovou;
         private $datAprovacao;
         private $indCobrarJuros = 1;
+        private $strJustificativa = "";
+        private $datDesativado = null;
 
         /**
          * Método responsável por setar o código numérico do orçamento
@@ -432,6 +435,33 @@
 
         public function setIndCobrarJuros($indCobrarJuros) {
             $this->indCobrarJuros = $indCobrarJuros;
+            return true;
+        }
+        
+        public function setIndDesativado($indDesativado) {
+            $this->indDesativado = $indDesativado;
+            return true;
+        }
+        
+        public function getIndDesativado() {
+            return $this->indAprovado;
+        }
+        
+        public function getStrJustificativa(){
+            return $this->strJustificativa;
+        }
+        
+        public function setStrJustificativa($strJustificativa){
+            $this->strJustificativa = $strJustificativa;
+            return true;
+        }
+        
+        public function getDatDesativado(){
+            return $this->datDesativado;
+        }
+        
+        public function setDatDesativado($datDesativado){
+            $this->datDesativado = $datDesativado;
             return true;
         }
 
