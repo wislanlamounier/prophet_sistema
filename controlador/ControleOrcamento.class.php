@@ -131,6 +131,7 @@
                 $this->visualizador->addJs('plugins/datatables/jquery.dataTables.js');
                 $this->visualizador->addJs('plugins/datatables/dataTables.bootstrap.js');
                 $this->visualizador->addJs('plugins/datatables/dataTables.init.js');
+                $this->visualizador->addJs('js/orcamentoConsultarFim.js');
 
                 $modOrcamento = new ModeloOrcamento();
                 $dtoOrcamento = $modOrcamento->getOrcamento($cdnOrcamento);
@@ -407,6 +408,22 @@
                 $this->modelo->atualizar('orcamento', $dtoOrcamento->getArrayBanco(), array('cdnOrcamento' => $cdnOrcamento));
                 $this->visualizador->setFlash('Orçamento reprovado com sucesso.', 'sucesso');
                 $this->orcamentoConsultarFim($cdnOrcamento);
+                return;
+            }
+            $this->erroExistente();
+            return;
+        }
+
+        public function orcamentoDesativar($params){
+            if($this->modelo->checaExiste('orcamento', 'cdnOrcamento', $params["cdnOrcamento"])){
+                $modOrcamento = new ModeloOrcamento();
+                $dtoOrcamento = $modOrcamento->getOrcamento($params["cdnOrcamento"]);
+                $dtoOrcamento->setIndDesativado(1);
+                $dtoOrcamento->setDatDesativado(date("Y-m-d"));
+                $dtoOrcamento->setStrJustificativa($params["strJustificativa"]);
+                $this->modelo->atualizar('orcamento', $dtoOrcamento->getArrayBanco(), array('cdnOrcamento' => $params["cdnOrcamento"]));
+                $this->visualizador->setFlash('Orçamento desativado com sucesso.', 'sucesso');
+                $this->orcamentoConsultarFim($params["cdnOrcamento"]);
                 return;
             }
             $this->erroExistente();
