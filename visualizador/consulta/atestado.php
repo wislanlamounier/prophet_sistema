@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label for="repouso" class="control-label">Dias de repouso</label>
-                                        <input type="text" class="form-control" name="repouso">
+                                        <input type="number" class="form-control" name="repouso">
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label for="observacoes" class="control-label">Observações</label>

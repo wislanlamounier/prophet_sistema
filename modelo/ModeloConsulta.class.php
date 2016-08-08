@@ -265,11 +265,11 @@
                 $nomDentista = 'DENTISTA INVÁLIDO';
                 $codCro = 'DENTISTA INVÁLIDO';
             }
-
-
+            
             $fins = $_POST['fins'];
             $rg = $_POST['rg'];
             $endereco = $_POST['endereco'];
+            
             $horario = $_POST['horario'];
             $horario = str_replace('-', 'às', $horario);
             $data = $_POST['data'];
@@ -350,22 +350,11 @@
                     $pdfAtestado->Ln(10);
 
                     $y = $pdfAtestado->GetY();
-
+    
                     $pdfAtestado->Line(3, $y, 10, $y);
-                    $pdfAtestado->Line(15, $y, 25, $y);
-                    $pdfAtestado->Line(30, $y, 40, $y);
-                    $pdfAtestado->Line(45, $y, 55, $y);
-                    $pdfAtestado->Line(60, $y, 70, $y);
-                    $pdfAtestado->Line(75, $y, 85, $y);
-                    $pdfAtestado->Line(90, $y, 100, $y);
-                    $pdfAtestado->Line(105, $y, 115, $y);
-                    $pdfAtestado->Line(120, $y, 130, $y);
-                    $pdfAtestado->Line(135, $y, 145, $y);
-                    $pdfAtestado->Line(150, $y, 160, $y);
-                    $pdfAtestado->Line(165, $y, 175, $y);
-                    $pdfAtestado->Line(180, $y, 190, $y);
-                    $pdfAtestado->Line(195, $y, 205, $y);
-                    $pdfAtestado->Line(210, $y, 220, $y);
+                    for($j = 25; $j <= 220; $j += 15){
+                        $pdfAtestado->Line($j - 10, $y, $j, $y);
+                    }
 
                     $pdfAtestado->Ln(10);
                 }
