@@ -151,6 +151,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="<?php echo BASE_URL; ?>/consulta/consultaMapa">
+                                <i class="fa fa-map-o"></i>
+                                Ver Mapa
+                            </a>
+                        </li>
+                        <li>
                             <a href="<?php echo BASE_URL; ?>/retorno/consultar">
                                 <i class="fa fa-backward"></i>
                                 Retornos

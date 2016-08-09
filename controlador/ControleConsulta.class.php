@@ -929,5 +929,60 @@
                 return;
             }
         }
+
+        public function consultaConsultaMapa(){
+            $this->visualizador->addCss('tema/css/plugins/datapicker/datepicker3.css');
+            $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.js');
+            $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.pt-BR.js');
+            $this->visualizador->addJs('js/consultaMapa.js');
+            
+            $consultorios = $this->modelo->consultar('consultorio', '*'); 
+            $consultas = $this->modelo->consultar('consulta', '*', array("datConsulta" => date("Y-m-d")));
+            
+            $modMain = new ModeloMain(true);
+            
+            if(!empty($consultas) && !empty($consultorios)){
+                foreach($consultas as $consulta){
+                    foreach($consultorios as $i => $consultorio){
+                        if($consulta["cdnConsultorio"] == $consultorio["cdnConsultorio"]){
+                            $usuario = $modMain->getUsuario($consulta["cdnDentista"]);
+                            $consulta["nomDentista"] = $usuario["nomUsuario"];
+                            $consultorios[$i]["consultas"][] = $consulta;
+                        }
+                    }
+                }
+            }
+            
+            $this->visualizador->atribuirValor('arrConsultorios', $consultorios);
+            $this->visualizador->mostrarNaTela('consultaMapa', 'Mapa de Consultório');
+            
+            return;
+        }
+
+        public function consultaConsultaMapaData($data){    
+            $arrData = explode("/", $data);
+            $data = $arrData[2] . "-" . $arrData[1] . "-" . $arrData[0];
+            
+            $consultorios = $this->modelo->consultar('consultorio', '*'); 
+            $consultas = $this->modelo->consultar('consulta', '*', array("datConsulta" => $data));
+            
+            $modMain = new ModeloMain(true);
+            
+            if(!empty($consultas) && !empty($consultorios)){
+                foreach($consultas as $consulta){
+                    foreach($consultorios as $i => $consultorio){
+                        if($consulta["cdnConsultorio"] == $consultorio["cdnConsultorio"]){
+                            $usuario = $modMain->getUsuario($consulta["cdnDentista"]);
+                            $consulta["nomDentista"] = $usuario["nomUsuario"];
+                            $consultorios[$i]["consultas"][] = $consulta;
+                        }
+                    }
+                }
+            }
+            
+            echo json_encode($consultorios);
+            
+            return;
+        }
     }
 

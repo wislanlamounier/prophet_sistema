@@ -137,6 +137,7 @@ $bloqueadas = array(
     'consulta14' => 'consultaCadastrarAvisoFim',
     'consulta15' => 'consultaMudarAviso',
     'consulta16' => 'consultaMudarAvisoFim',
+    'consulta17' => 'consultaMapa',
 
     // Consultório
     'consultorio1' => 'consultorioCadastrar',
@@ -513,6 +514,7 @@ $pacotes = array(
             'consulta4',
             'consulta5',
             'consulta3',
+            'consulta17',
             'agenda1',
             'agenda2',
             'agenda3',
