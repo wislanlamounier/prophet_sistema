@@ -71,6 +71,13 @@
                                         <h3 class="page-header text-center">Quantidade de parcelas</h3>
                                     </div>
                                 </div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label for="numVezesOferecidas" class="control-label">Número de parcelas a serem oferecidas</label>
+                                        <input type="number" value="6" class="form-control" id="numVezesOferecidas" name="numVezesOferecidas">
+                                    </div>
+                                </div>
 
                                 <div id="pgtoParcelado">
                                     <div class="row" >

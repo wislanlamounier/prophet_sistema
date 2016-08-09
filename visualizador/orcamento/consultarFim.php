@@ -103,7 +103,7 @@
                         <!-- Pagamento !-->
                         
                         <?php
-                            if(!(is_null($dtoOrcamento->getIndDesativado()))){
+                            if(!$dtoOrcamento->getIndDesativado()){
                         ?>
                         <div class="row">
                             <div class="col-md-12">

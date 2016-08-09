@@ -194,7 +194,7 @@
                 // Tabela de formas de pagamento
                 if(!isset($arrParcelas)){
                     $arrParcelas = array();
-                    $numVezes = 6;
+                    $numVezes = $dtoOrcamento->getNumVezesOferecidas();
                     $aVista = array(
                         'numVezes' => 'A VISTA',
                         'valores' => '1x de R$'.$dtoOrcamento->getValOrcamento(true),
@@ -798,5 +798,27 @@
             }
             return;
         }
+        
+        public function orcamentoAutorizacaoDesconto($cdnOrcamento, $numParcela = null){
+            if($this->modelo->checaExiste('orcamento', 'cdnOrcamento', $cdnOrcamento)){
+                if($this->modelo->checaExiste('orcamento_parcela', 'cdnOrcamento', $cdnOrcamento)){
+                    if(!is_null($numParcela)){
+                        $modOrcamento = new ModeloOrcamento();
+                        $modOrcamento->orcamentoAutorizacaoDesconto($cdnOrcamento, $numParcela);
+                    }else{
+                        $this->visualizador->setFlash('Informe o número da parcela.', 'erro');
+                        $this->orcamentoConsultarFim($cdnOrcamento);
+                        return;
+                    }
+                }else{
+                    $modOrcamento = new ModeloOrcamento();
+                    $modOrcamento->orcamentoAutorizacaoDesconto($cdnOrcamento);
+                    return;
+                }
+            }
+            $this->erroExistente();
+            return;
+        }
+        
 
     }

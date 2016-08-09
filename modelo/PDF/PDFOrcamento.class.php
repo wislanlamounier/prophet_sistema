@@ -358,6 +358,24 @@
             }
 
         }
+        
+        public function AddParcelaAutorizacao($cdnOrcamento, $numParcela, $debitada, $vencimento, $titular, $valor, $mes){
+            $this->SetWidths(array(0));
+            $this->SetAligns(array('L'));
+            $this->PutRow(array('Empresa debitada: '.$debitada), true);
+            $this->Ln(3);
+            $this->PutRow(array('Autorizacao de desconto número: '.$cdnOrcamento.'-'.$numParcela.'. Vencimento: '.$vencimento), true);
+            $this->PutRow(array('Titular: '.$titular), true);
+            $this->PutRow(array('Empresa Creditada: '.$_SESSION['nomClinica']), true);
+            $this->PutRow(array('Valor da parcela: R$'.$valor.' - Para desconto em '.strtoupper($mes).' de 2016'), true);
+            $this->SetAligns(array('C'));
+            $this->SetBorders(array('T'));
+            $this->Ln(10);
+            $this->PutRow(array('Responsável pela debitada'), true);
+            
+            $this->SetAligns(('L'));
+            $this->SetBorders((''));
+        }
 
         public function ImprimirOrcamento() {
 

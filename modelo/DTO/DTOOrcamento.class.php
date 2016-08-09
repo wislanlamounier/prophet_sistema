@@ -31,6 +31,7 @@
         private $indCobrarJuros = 1;
         private $strJustificativa = "";
         private $datDesativado = null;
+        private $numVezesOferecidas;
 
         /**
          * Método responsável por setar o código numérico do orçamento
@@ -444,7 +445,7 @@
         }
         
         public function getIndDesativado() {
-            return $this->indAprovado;
+            return $this->indDesativado;
         }
         
         public function getStrJustificativa(){
@@ -464,6 +465,17 @@
             $this->datDesativado = $datDesativado;
             return true;
         }
+    
+        public function getNumVezesOferecidas() {
+            return $this->numVezesOferecidas;
+        }
+    
+        public function setNumVezesOferecidas($numVezesOferecidas) {
+            $this->numVezesOferecidas = $numVezesOferecidas;
+            return true;
+        }
+        
+        
 
 
     }

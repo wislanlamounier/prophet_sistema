@@ -62,6 +62,17 @@
                 </div>
                 <?php
             }
+            if($dtoOrcamentoFormaPagamento->getIndVia() == 'autorizacaoDesc' and $dtoOrcamento->getIndAprovado() and !$dtoOrcamento->getIndFinalizado()){
+                ?>
+                <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                    <a target="blank" href="<?php echo BASE_URL; ?>/orcamento/autorizacaoDesconto/<?php echo $dtoOrcamento->getCdnOrcamento(); ?>">
+                        <button type="button" class="btn btn-block btn-lg btn-success">
+                            Gerar autorização de desconto
+                        </button>
+                    </a>
+                </div>
+                <?php
+            }
         }
     }else{ // ainda não escolheu a forma
         include_once('incFormas.php');
