@@ -444,7 +444,7 @@
         }
         
         public function getIndDesativado() {
-            return $this->indAprovado;
+            return $this->indDesativado;
         }
         
         public function getStrJustificativa(){

@@ -1,3 +1,10 @@
+                    <?php 
+                        if($dtoOrcamento->getIndAprovado() || $dtoOrcamento->getIndDesativado()){
+                            $disabledEdicao = "disabled";
+                        } else{
+                            $disabledEdicao = "";
+                        }
+                    ?>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
@@ -70,11 +77,11 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label for="datOrcamento" class="control-label">Data</label>
-                                <input disabled type="date" name="datOrcamento" class="form-control mask-date" value="<?php echo $dtoOrcamento->getDatOrcamento(); ?>">
+                                <input <?php echo $disabledEdicao; ?> type="text" name="datOrcamento" id="datOrcamento" class="form-control mask-date" value="<?php echo $datOrcamentoBr; ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for="datValidade" class="control-label">Validade</label>
-                                <input disabled type="date" name="datValidade" class="form-control mask-date" value="<?php echo $dtoOrcamento->getDatValidade(); ?>">
+                                <input <?php echo $disabledEdicao; ?> type="text" name="datValidade" id="datValidade" class="form-control mask-date" value="<?php echo $datValidadeBr; ?>">
                             </div>
                         </div>
 
@@ -96,14 +103,14 @@
                                 <h2>
                                     <label for="valOrcamento" class="control-label">Valor</label>
                                 </h2>
-                                <input disabled type="text" id="valor" name="valOrcamento" class="form-control mask-money" value="R$<?php echo $dtoOrcamento->getValOrcamento(true); ?>">
+                                <input <?php echo $disabledEdicao; ?> type="text" id="valor" name="valOrcamento" class="form-control mask-money" value="R$<?php echo $dtoOrcamento->getValOrcamento(true); ?>">
                             </div>
                         </div>
 
                         <!-- Pagamento !-->
                         
                         <?php
-                            if(!(is_null($dtoOrcamento->getIndDesativado()))){
+                            if(!($dtoOrcamento->getIndDesativado())){
                         ?>
                         <div class="row">
                             <div class="col-md-12">
@@ -141,7 +148,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label for="desOrcamento" class="control-label">Observações</label>
-                                <textarea disabled name="desOrcamento" class="form-control"><?php echo $dtoOrcamento->getDesOrcamento(); ?></textarea>
+                                <textarea <?php echo $disabledEdicao; ?> id="desOrcamento" name="desOrcamento" class="form-control"><?php echo $dtoOrcamento->getDesOrcamento(); ?></textarea>
                             </div>
                         </div>
 
@@ -171,14 +178,16 @@
                                 </button>
                             </a>
                         </div>
+                        <?php if((!$dtoOrcamento->getIndAprovado()) && (!$dtoOrcamento->getIndDesativado())) { ?>
                         <div class="col-sm-4">
                             <hr />
                             <a>
-                                <button disabled type="button" class="btn btn-block btn-lg btn-success">
-                                    Editar orçamento
+                                <button type="button" class="btn btn-block btn-lg btn-success" onclick="salvarEdicao()">
+                                    Salvar edição do orçamento
                                 </button>
                             </a>
                         </div>
+                        <?php } ?>
                     </div>
 
                     <div class="row">

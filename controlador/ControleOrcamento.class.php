@@ -132,10 +132,21 @@
                 $this->visualizador->addJs('plugins/datatables/dataTables.bootstrap.js');
                 $this->visualizador->addJs('plugins/datatables/dataTables.init.js');
                 $this->visualizador->addJs('js/orcamentoConsultarFim.js');
+                $this->visualizador->addCss('tema/css/plugins/datapicker/datepicker3.css');
+                $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.js');
+                $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.pt-BR.js');
 
                 $modOrcamento = new ModeloOrcamento();
                 $dtoOrcamento = $modOrcamento->getOrcamento($cdnOrcamento);
                 $this->visualizador->atribuirValor('dtoOrcamento', $dtoOrcamento);
+                
+                $arrDatOrcamento = explode("-", $dtoOrcamento->getDatOrcamento());
+                $datOrcamentoBr = $arrDatOrcamento[2] . "/" . $arrDatOrcamento[1] . "/" . $arrDatOrcamento[0];
+                $this->visualizador->atribuirValor('datOrcamentoBr', $datOrcamentoBr);
+                
+                $arrDatValidade = explode("-", $dtoOrcamento->getDatValidade());
+                $datValidadeBr = $arrDatValidade[2] . "/" . $arrDatValidade[1] . "/" . $arrDatValidade[0];
+                $this->visualizador->atribuirValor('datValidadeBr', $datValidadeBr);
 
                 // Usuário que aprovou
                 $modMain = new ModeloMain(true);
@@ -796,6 +807,23 @@
                     $this->visualizador->mostrarNaTela('relatorio', 'Relatórios de orçamentos');
                     break;
             }
+            return;
+        }
+
+        public function orcamentoSalvarEdicao($params){
+            if($this->modelo->checaExiste('orcamento', 'cdnOrcamento', $params["cdnOrcamento"])){
+                $modOrcamento = new ModeloOrcamento();
+                $dtoOrcamento = $modOrcamento->getOrcamento($params["cdnOrcamento"]);
+                $dtoOrcamento->setDatOrcamento($params["datOrcamento"]);
+                $dtoOrcamento->setDatValidade($params["datValidade"]);
+                $dtoOrcamento->setDesOrcamento($params["desOrcamento"]);
+                $dtoOrcamento->setValOrcamento($params["valOrcamento"]);
+                $this->modelo->atualizar('orcamento', $dtoOrcamento->getArrayBanco(), array('cdnOrcamento' => $params["cdnOrcamento"]));
+                $this->visualizador->setFlash('Orçamento salvo com sucesso.', 'sucesso');
+                $this->orcamentoConsultarFim($params["cdnOrcamento"]);
+                return;
+            }
+            $this->erroExistente();
             return;
         }
 
