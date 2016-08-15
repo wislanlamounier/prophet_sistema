@@ -21,7 +21,7 @@
     if(isset($arrPaciente))
         $value = 'value="'.$arrPaciente['cdnPaciente'].'"';
 ?>  
-<input type="hidden" name="cdnPaciente" <?php echo $value; ?>>
+<input type="hidden" name="cdnPaciente" id="cdnPaciente" <?php echo $value; ?>>
 <div class="modal inmodal" id="modalPaciente" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content animated fadeIn">

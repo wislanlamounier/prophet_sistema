@@ -136,6 +136,13 @@
                 $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.js');
                 $this->visualizador->addJs('tema/js/plugins/datapicker/bootstrap-datepicker.pt-BR.js');
 
+                $this->visualizador->addCss('plugins/select2/dist/css/select2.css');
+                $this->visualizador->addJs('plugins/select2/dist/js/select2.full.js');
+
+                $this->visualizador->addJs('plugins/datatables_new/datatables.min.js');
+                $this->visualizador->addCss('https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css');
+                $this->visualizador->addJs('js/pacienteSelect.js');
+
                 $modOrcamento = new ModeloOrcamento();
                 $dtoOrcamento = $modOrcamento->getOrcamento($cdnOrcamento);
                 $this->visualizador->atribuirValor('dtoOrcamento', $dtoOrcamento);
@@ -811,6 +818,7 @@
         }
 
         public function orcamentoSalvarEdicao($params){
+            error_log($params["cdnPaciente"]);
             if($this->modelo->checaExiste('orcamento', 'cdnOrcamento', $params["cdnOrcamento"])){
                 $modOrcamento = new ModeloOrcamento();
                 $dtoOrcamento = $modOrcamento->getOrcamento($params["cdnOrcamento"]);
@@ -818,6 +826,7 @@
                 $dtoOrcamento->setDatValidade($params["datValidade"]);
                 $dtoOrcamento->setDesOrcamento($params["desOrcamento"]);
                 $dtoOrcamento->setValOrcamento($params["valOrcamento"]);
+                $dtoOrcamento->setCdnPaciente($params["cdnPaciente"]);
                 $this->modelo->atualizar('orcamento', $dtoOrcamento->getArrayBanco(), array('cdnOrcamento' => $params["cdnOrcamento"]));
                 $this->visualizador->setFlash('Orçamento salvo com sucesso.', 'sucesso');
                 $this->orcamentoConsultarFim($params["cdnOrcamento"]);

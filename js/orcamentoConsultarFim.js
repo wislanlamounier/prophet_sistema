@@ -41,9 +41,10 @@ function salvarEdicao(){
             datOrcamento : $("#datOrcamento").val(),
             datValidade : $("#datValidade").val(),
             desOrcamento : $("#desOrcamento").val(),
-            valOrcamento : $("#valor").val()
+            valOrcamento : $("#valor").val(),
+            cdnPaciente : $("#cdnPaciente").val()
         };
-
+        
         $.ajax({
             type: "GET",
             url: "index.php",

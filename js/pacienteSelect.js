@@ -50,8 +50,8 @@ $(function () {
 
         $('input[name=cdnPaciente]').val(cdnPacienteMODAL);
 
-        $('input[name=cdnOrcamento]').val('');
-        $('#cdnOrcamento').text('Selecionar orçamento...');
+        //$('input[name=cdnOrcamento]').val('');
+        //$('#cdnOrcamento').text('Selecionar orçamento...');
 
 
     })

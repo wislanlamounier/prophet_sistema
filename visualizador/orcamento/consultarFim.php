@@ -68,10 +68,16 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="cdnPaciente" class="control-label">Paciente</label>
-                                    <input disabled class="form-control" type="text" name="cdnPaciente" value="<?php echo $arrPaciente['nomPaciente']; ?>">
-                                </div>
+                                <?php if($dtoOrcamento->getIndAprovado() || $dtoOrcamento->getIndDesativado()){ ?>
+                                    <div class="form-group">
+                                        <label for="cdnPaciente" class="control-label">Paciente</label>
+                                        <input disabled class="form-control" type="text" name="cdnPaciente" value="<?php echo $arrPaciente['nomPaciente']; ?>">
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="form-group">
+                                        <?php require('visualizador/paciente/modalSelect.php'); ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="row">
@@ -178,20 +184,7 @@
                                 </button>
                             </a>
                         </div>
-                        <?php if((!$dtoOrcamento->getIndAprovado()) && (!$dtoOrcamento->getIndDesativado())) { ?>
                         <div class="col-sm-4">
-                            <hr />
-                            <a>
-                                <button type="button" class="btn btn-block btn-lg btn-success" onclick="salvarEdicao()">
-                                    Salvar edição do orçamento
-                                </button>
-                            </a>
-                        </div>
-                        <?php } ?>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-2">
                             <hr />
                             <a>
                                 <button type="button" class="btn btn-block btn-lg btn-warning" onclick="openModalJustificativa();">
@@ -199,6 +192,19 @@
                                 </button>
                             </a>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <?php if((!$dtoOrcamento->getIndAprovado()) && (!$dtoOrcamento->getIndDesativado())) { ?>
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <hr />
+                                <a>
+                                    <button type="button" class="btn btn-block btn-lg btn-success" onclick="salvarEdicao()">
+                                        Salvar edição do orçamento
+                                    </button>
+                                </a>
+                            </div>
+                        <?php } ?>
                     <?php if(is_null($dtoOrcamento->getIndAprovado())){ ?>
                         <div class="col-sm-4">
                             <hr>
